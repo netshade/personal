@@ -311,40 +311,6 @@ alias srvr='ssh user@server.example.com'
 	alias cp='cp -i'
 
 # -----------------------------------------------
-#  Fink Support
-# -----------------------------------------------
-
-## This is necessary because FINKROOT/bin/init.sh is currently not
-## compatible with zsh.
-
-# If Fink is installed, we need to append the fink paths
-if [ -f /opt/local/bin/port ]; then
-    
-    if [ -z "$PATH" ]; then
-        PATH=/opt/local/mono/bin:/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
-    else
-        PATH=/opt/local/mono/bin:/opt/local/bin:/opt/local/sbin:$PATH
-    fi
-
-    if [ -z "$MANPATH" ]; then
-        MANPATH=`/usr/bin/manpath -q`
-    fi
-    MANPATH=/opt/local/share/man:$MANPATH
-
-    if [ -z "$INFOPATH" ]; then
-        INFOPATH=/opt/local/share/info:/opt/local/info:/usr/share/info
-    else
-        INFOPATH=/opt/local/share/info:/opt/local/info:$INFOPATH
-    fi
-
-    if [ -z "$PERL5LIB" ]; then
-        PERL5LIB=/opt/local/lib/perl5
-    else
-        PERL5LIB=/opt/local/lib/perl5:$PERL5LIB
-    fi
-fi
-
-# -----------------------------------------------
 #  User-defined Functions
 # -----------------------------------------------
 
@@ -371,6 +337,8 @@ smartextract () {
     fi
 }
 
+bindkey -e
 # -----------------------------------------------
 #  END
 # -----------------------------------------------
+
