@@ -29,6 +29,9 @@
 (add-to-list 'load-path "~/.emacs.d/nxml/")
 (add-to-list 'load-path "~/.emacs.d/rhtml/")
 (add-to-list 'load-path "~/.emacs.d/rails/")
+(add-to-list 'load-path "~/.emacs.d/color-theme/")
+(add-to-list 'load-path "~/.emacs.d/color-theme/themes/")
+(require 'color-theme)
 (require 'ido)
 (require 'nxml-mode)
 (require 'rcodetools)
@@ -38,3 +41,9 @@
 (autoload 'js2-mode "js2" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (setq js2-basic-offset 2)
+(color-theme-initialize)
+(eval-after-load "color-theme"
+  '(progn
+     (color-theme-initialize)
+     (color-theme-blackboard)))
+
